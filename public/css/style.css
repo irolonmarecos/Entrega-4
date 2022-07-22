@@ -1,0 +1,12 @@
+*{
+    background-color: grey;
+}
+.principal {
+    text-align: center;
+    position: relative;
+    background-color: rgb(189, 180, 180);
+}
+h1{
+    text-align: center;
+    font-size: 80px;
+}
