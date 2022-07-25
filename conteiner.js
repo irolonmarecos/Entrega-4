@@ -32,13 +32,13 @@ class container  {
             throw new error ('ERROR')
         }
     }
-    async save(){
+    async save(nom, prec){
         try{
             const data = fs.readFileSync("./texto.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             let Id = dataNuevo.Productos.length
-            const nvoProd = new Almacen (Id,precio(1,5000),Id)
-            nvoProd.product = `Producto n° ${calcId (nvoProd.id, dataNuevo)}`
+            const nvoProd = new Almacen (nom,prec,Id)
+            //nvoProd.product = `Producto n° ${calcId (nvoProd.id, dataNuevo)}`
             nvoProd.id = calcId (nvoProd.id, dataNuevo)
             dataNuevo.Productos.push(nvoProd)
             fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))

@@ -119,6 +119,11 @@
       "product": "Producto n° 25",
       "price": 2607,
       "id": 25
+    },
+    {
+      "product": "Producto n° 26",
+      "price": 4547,
+      "id": 26
     }
   ]
 }

@@ -30,6 +30,7 @@ router.delete('/:id', async(req,res)=>{
 
 router.post('/', async (req,res)=>{
     const nvoProd =  req.body
+    //NO SE PORQUE NO ME TOMA la informacion del REQ.BODY
     console.log(nvoProd);
     const productoAgregado= await totalProductos.save(nvoProd)
     //const pr =   json.nvoProd
