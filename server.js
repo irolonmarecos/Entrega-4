@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static( 'public'))
 app.use('/api/productos',router)
 
-const PORT = process.env.PORT || 2020
+const PORT = process.env.PORT || 8080
 const server = app.listen(PORT, ()=>{
     console.log(`El servidor que se esta ejecutando es el ${PORT}`);
 })
