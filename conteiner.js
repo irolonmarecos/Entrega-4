@@ -1,8 +1,5 @@
 const { error, log } = require("console");
 const fs = require("fs");
-const { wrap } = require("module");
-const { join } = require("path/posix");
-//const dd = require('./public/main')
 
 function calcId (id,dataNuevo){
     if(id == 0 ){
@@ -11,9 +8,7 @@ function calcId (id,dataNuevo){
         return dataNuevo.Productos[dataNuevo.Productos.length - 1].id + 1
     }
 }
-function precio(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
+
 class Almacen  {
     constructor(product, price, id){
         this.product = product
@@ -26,19 +21,17 @@ class container  {
         try{
             const data =  fs.readFileSync("./texto.json", "utf-8");
             let dataNuevo = JSON.parse(data)
-            //const {Productos} = dataNuevo
             return dataNuevo.Productos
         }catch(err){
             throw new error ('ERROR')
         }
     }
-    async save(nom, prec){
+    async save(nombre, precio){
         try{
             const data = fs.readFileSync("./texto.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             let Id = dataNuevo.Productos.length
-            const nvoProd = new Almacen (nom,prec,Id)
-            //nvoProd.product = `Producto n° ${calcId (nvoProd.id, dataNuevo)}`
+            const nvoProd = new Almacen (nombre,precio,Id)
             nvoProd.id = calcId (nvoProd.id, dataNuevo)
             dataNuevo.Productos.push(nvoProd)
             fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))

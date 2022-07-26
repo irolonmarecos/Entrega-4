@@ -10,7 +10,6 @@ const totalProductos = new Container('./texto.json')
 
 
 app.use(express.json())
-app.use(express.urlencoded({extended:true}));
 
 router.get('/',async (req,res)=>{
     let productos = await totalProductos.getAll()
@@ -30,15 +29,9 @@ router.delete('/:id', async(req,res)=>{
 })
 
 router.post('/', async (req,res)=>{
-    const {numero,precio} =  req.body
-    //NO SE PORQUE NO ME TOMA la informacion del REQ.BODY
-    console.log({numero,precio});
-    const productoAgregado= await totalProductos.save({numero,precio})
-    //const pr =   json.nvoProd
-    //console.log(pr);
-    console.log(productoAgregado);
-    res.json({numero,precio});
-    //res.status(200).end()
+    const {nombre,precio} =  req.body
+    const productoAgregado= await totalProductos.save(nombre,precio)
+    res.json({nombre,precio});
 })
 
 router.put('/:id', async (req,res)=>{

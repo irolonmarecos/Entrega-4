@@ -6,6 +6,7 @@ const router = require('./routes/account')
 
 app.use(express.json())
 app.use(express.static( 'public'))
+app.use(express.urlencoded({extended:true}));
 app.use('/api/productos',router)
 
 const PORT = process.env.PORT || 8080
