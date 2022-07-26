@@ -19,7 +19,7 @@ class Almacen  {
 class container  {
     async getAll(){
         try{
-            const data =  fs.readFileSync("./texto.json", "utf-8");
+            const data =  fs.readFileSync("./routes/stock.json", "utf-8");
             let dataNuevo = JSON.parse(data)
             return dataNuevo.Productos
         }catch(err){
@@ -28,20 +28,20 @@ class container  {
     }
     async save(nombre, precio){
         try{
-            const data = fs.readFileSync("./texto.json", "utf-8")
+            const data = fs.readFileSync("./routes/stock.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             let Id = dataNuevo.Productos.length
             const nvoProd = new Almacen (nombre,precio,Id)
             nvoProd.id = calcId (nvoProd.id, dataNuevo)
             dataNuevo.Productos.push(nvoProd)
-            fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))
+            fs.writeFileSync("./routes/stock.json", JSON.stringify(dataNuevo, null, 2))
         }catch(err){
             throw new error ('ERROR')
         }
     }
     async getById (id){
         try{
-            const data = fs.readFileSync("./texto.json", "utf-8")
+            const data = fs.readFileSync("./routes/stock.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             let filtro = dataNuevo.Productos.find((el) => el.id === id)
             return filtro;
@@ -51,36 +51,36 @@ class container  {
     }
     async deleteById(id) {
         try{
-            const data = fs.readFileSync("./texto.json", "utf-8")
+            const data = fs.readFileSync("./routes/stock.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             const {Productos} = dataNuevo
             let filtro = Productos.filter((el) => el.id !== id)
             dataNuevo.Productos = filtro
-            fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))
+            fs.writeFileSync("./routes/stock.json", JSON.stringify(dataNuevo, null, 2))
         }catch(err){
             throw new error ('ERROR')
         }
     } 
     async deleteAll() {
         try{
-            const data = fs.readFileSync("./texto.json", "utf-8")
+            const data = fs.readFileSync("./routes/stock.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             const {Productos} = dataNuevo
             let borrado = []
             dataNuevo.Productos = borrado
-            fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))
+            fs.writeFileSync("./routes/stock.json", JSON.stringify(dataNuevo, null, 2))
         }catch(err){
             throw new error ('ERROR')
         }
     } 
     async update(id,prod,pric) {
         try{
-            const data = fs.readFileSync("./texto.json", "utf-8")
+            const data = fs.readFileSync("./routes/stock.json", "utf-8")
             const dataNuevo = JSON.parse(data)
             let filtro = dataNuevo.Productos.find((el) => el.id === id)
             filtro.product = prod;
             filtro.price =  pric;
-            fs.writeFileSync("./texto.json", JSON.stringify(dataNuevo, null, 2))
+            fs.writeFileSync("./routes/stock.json", JSON.stringify(dataNuevo, null, 2))
         }catch(err){
             throw new error (err)
         }

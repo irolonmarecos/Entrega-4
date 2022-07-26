@@ -1,0 +1,34 @@
+{
+  "Productos": [
+    {
+      "product": "Producto n° 1",
+      "price": 1204,
+      "id": 1
+    },
+    {
+      "product": "Producto n° 2",
+      "price": 4853,
+      "id": 2
+    },
+    {
+      "product": "Producto n° 3",
+      "price": 2260,
+      "id": 3
+    },
+    {
+      "product": "auto",
+      "price": "53345",
+      "id": 4
+    },
+    {
+      "product": "chocolates",
+      "price": "150",
+      "id": 5
+    },
+    {
+      "product": "casa",
+      "price": "443535",
+      "id": 6
+    }
+  ]
+}

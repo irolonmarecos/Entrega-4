@@ -2,11 +2,11 @@ const express = require('express');
 const { Router } = express
 const { json } = require('express');
 
-const Container = require('../conteiner')
+const Container = require('../Utils/conteiner')
 
 const app = express();
 const router = Router();
-const totalProductos = new Container('./texto.json')
+const totalProductos = new Container('./routes/stock.json')
 
 
 app.use(express.json())
