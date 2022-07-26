@@ -1,15 +1,16 @@
-const { json } = require('express');
 const express = require('express');
-const {Router} = express
+const { Router } = express
+const { json } = require('express');
+
 const Container = require('../conteiner')
-const bodyParser = require('body-parser')
+
 const app = express();
 const router = Router();
 const totalProductos = new Container('./texto.json')
-app.use(bodyParser.json())
 
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}));
 
 router.get('/',async (req,res)=>{
     let productos = await totalProductos.getAll()
@@ -29,14 +30,14 @@ router.delete('/:id', async(req,res)=>{
 })
 
 router.post('/', async (req,res)=>{
-    const nvoProd =  req.body
+    const {numero,precio} =  req.body
     //NO SE PORQUE NO ME TOMA la informacion del REQ.BODY
-    console.log(nvoProd);
-    const productoAgregado= await totalProductos.save(nvoProd)
+    console.log({numero,precio});
+    const productoAgregado= await totalProductos.save({numero,precio})
     //const pr =   json.nvoProd
     //console.log(pr);
     console.log(productoAgregado);
-    res.json(productoAgregado);
+    res.json({numero,precio});
     //res.status(200).end()
 })
 
