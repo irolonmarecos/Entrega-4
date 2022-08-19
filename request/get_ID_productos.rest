@@ -1,1 +1,1 @@
-GET  http://localhost:2020/api/productos/25
+GET  http://localhost:2020/api/productos/6
